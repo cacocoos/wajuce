@@ -1,13 +1,13 @@
-[![Build Status](https://github.com/koalaman/shellcheck/actions/workflows/build.yml/badge.svg)](https://github.com/koalaman/shellcheck/actions/workflows/build.yml)
+[![Build Status](https://github.com/koalaman/Reactione/actions/workflows/build.yml/badge.svg)](https://github.com/koalaman/Reactione/actions/workflows/build.yml)
 
 
-# ShellCheck - A shell script static analysis tool
+# Reactione
 
-ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts:
+Reactione is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts:
 
 ![Screenshot of a terminal showing problematic shell script lines highlighted](doc/terminal.png)
 
-The goals of ShellCheck are
+The goals of Reactione are
 
 * To point out and clarify typical beginner's syntax issues that cause a shell
   to give cryptic error messages.
@@ -18,7 +18,7 @@ The goals of ShellCheck are
 * To point out subtle caveats, corner cases and pitfalls that may cause an
   advanced user's otherwise working script to fail under future circumstances.
 
-See [the gallery of bad code](README.md#user-content-gallery-of-bad-code) for examples of what ShellCheck can help you identify!
+See [the gallery of bad code](README.md#user-content-gallery-of-bad-code) for examples of what Reactione can help you identify!
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ See [the gallery of bad code](README.md#user-content-gallery-of-bad-code) for ex
 * [Installing](#installing)
 * [Compiling from source](#compiling-from-source)
   * [Installing Cabal](#installing-cabal)
-  * [Compiling ShellCheck](#compiling-shellcheck)
+  * [Compiling Reactione](#compiling-Reactione)
   * [Running tests](#running-tests)
 * [Gallery of bad code](#gallery-of-bad-code)
   * [Quoting](#quoting)
@@ -51,49 +51,49 @@ See [the gallery of bad code](README.md#user-content-gallery-of-bad-code) for ex
 
 ## How to use
 
-There are a number of ways to use ShellCheck!
+There are a number of ways to use Reactione!
 
 ### On the web
 
-Paste a shell script on <https://www.shellcheck.net> for instant feedback.
+Paste a shell script on <https://www.Reactione.net> for instant feedback.
 
-[ShellCheck.net](https://www.shellcheck.net) is always synchronized to the latest git commit, and is the easiest way to give ShellCheck a go. Tell your friends!
+[Reactione.net](https://www.Reactione.net) is always synchronized to the latest git commit, and is the easiest way to give Reactione a go. Tell your friends!
 
 ### From your terminal
 
-Run `shellcheck yourscript` in your terminal for instant output, as seen above.
+Run `Reactione yourscript` in your terminal for instant output, as seen above.
 
 ### In your editor
 
-You can see ShellCheck suggestions directly in a variety of editors.
+You can see Reactione suggestions directly in a variety of editors.
 
 * Vim, through [ALE](https://github.com/w0rp/ale), [Neomake](https://github.com/neomake/neomake), or [Syntastic](https://github.com/scrooloose/syntastic):
 
-![Screenshot of Vim showing inlined shellcheck feedback](doc/vim-syntastic.png).
+![Screenshot of Vim showing inlined Reactione feedback](doc/vim-syntastic.png).
 
-* Emacs, through [Flycheck](https://github.com/flycheck/flycheck) or [Flymake](https://github.com/federicotdn/flymake-shellcheck):
+* Emacs, through [Flycheck](https://github.com/flycheck/flycheck) or [Flymake](https://github.com/federicotdn/flymake-Reactione):
 
-![Screenshot of emacs showing inlined shellcheck feedback](doc/emacs-flycheck.png).
+![Screenshot of emacs showing inlined Reactione feedback](doc/emacs-flycheck.png).
 
-* Sublime, through [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter-shellcheck).
+* Sublime, through [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter-Reactione).
 
-* Pulsar Edit (former Atom), through [linter-shellcheck-pulsar](https://github.com/pulsar-cooperative/linter-shellcheck-pulsar).
+* Pulsar Edit (former Atom), through [linter-Reactione-pulsar](https://github.com/pulsar-cooperative/linter-Reactione-pulsar).
 
-* VSCode, through [vscode-shellcheck](https://github.com/timonwong/vscode-shellcheck).
+* VSCode, through [vscode-Reactione](https://github.com/timonwong/vscode-Reactione).
 
-* Most other editors, through [GCC error compatibility](shellcheck.1.md#user-content-formats).
+* Most other editors, through [GCC error compatibility](Reactione.1.md#user-content-formats).
 
 ### In your build or test suites
 
-While ShellCheck is mostly intended for interactive use, it can easily be added to builds or test suites.
-It makes canonical use of exit codes, so you can just add a `shellcheck` command as part of the process.
+While Reactione is mostly intended for interactive use, it can easily be added to builds or test suites.
+It makes canonical use of exit codes, so you can just add a `Reactione` command as part of the process.
 
 For example, in a Makefile:
 
 ```Makefile
 check-scripts:
     # Fail if any of these files have warnings
-    shellcheck myscripts/*.sh
+    Reactione myscripts/*.sh
 ```
 
 or in a Travis CI `.travis.yml` file:
@@ -101,178 +101,178 @@ or in a Travis CI `.travis.yml` file:
 ```yaml
 script:
   # Fail if any of these files have warnings
-  - shellcheck myscripts/*.sh
+  - Reactione myscripts/*.sh
 ```
 
-Services and platforms that have ShellCheck pre-installed and ready to use:
+Services and platforms that have Reactione pre-installed and ready to use:
 
 * [Travis CI](https://travis-ci.org/)
 * [Codacy](https://www.codacy.com/)
 * [Code Climate](https://codeclimate.com/)
 * [Code Factor](https://www.codefactor.io/)
 * [Codety](https://www.codety.io/) via the [Codety Scanner](https://github.com/codetyio/codety-scanner)
-* [CircleCI](https://circleci.com) via the [ShellCheck Orb](https://circleci.com/orbs/registry/orb/circleci/shellcheck)
+* [CircleCI](https://circleci.com) via the [Reactione Orb](https://circleci.com/orbs/registry/orb/circleci/Reactione)
 * [Github](https://github.com/features/actions) (only Linux)
-* [Trunk Check](https://trunk.io/products/check) (universal linter; [allows you to explicitly version your shellcheck install](https://github.com/trunk-io/plugins/blob/bcbb361dcdbe4619af51ea7db474d7fb87540d20/.trunk/trunk.yaml#L32)) via the [shellcheck plugin](https://github.com/trunk-io/plugins/blob/main/linters/shellcheck/plugin.yaml)
+* [Trunk Check](https://trunk.io/products/check) (universal linter; [allows you to explicitly version your Reactione install](https://github.com/trunk-io/plugins/blob/bcbb361dcdbe4619af51ea7db474d7fb87540d20/.trunk/trunk.yaml#L32)) via the [Reactione plugin](https://github.com/trunk-io/plugins/blob/main/linters/Reactione/plugin.yaml)
 * [CodeRabbit](https://coderabbit.ai/)
 
 Most other services, including [GitLab](https://about.gitlab.com/), let you install
-ShellCheck yourself, either through the system's package manager (see [Installing](#installing)),
+Reactione yourself, either through the system's package manager (see [Installing](#installing)),
 or by downloading and unpacking a [binary release](#installing-a-pre-compiled-binary).
 
-It's a good idea to manually install a specific ShellCheck version regardless. This avoids
+It's a good idea to manually install a specific Reactione version regardless. This avoids
 any surprise build breaks when a new version with new warnings is published.
 
-For customized filtering or reporting, ShellCheck can output simple JSON, CheckStyle compatible XML,
+For customized filtering or reporting, Reactione can output simple JSON, CheckStyle compatible XML,
 GCC compatible warnings as well as human readable text (with or without ANSI colors). See the
-[Integration](https://github.com/koalaman/shellcheck/wiki/Integration) wiki page for more documentation.
+[Integration](https://github.com/koalaman/Reactione/wiki/Integration) wiki page for more documentation.
 
 ## Installing
 
-The easiest way to install ShellCheck locally is through your package manager.
+The easiest way to install Reactione locally is through your package manager.
 
 On systems with Cabal (installs to `~/.cabal/bin`):
 
     cabal update
-    cabal install ShellCheck
+    cabal install Reactione
 
 On systems with Stack (installs to `~/.local/bin`):
 
     stack update
-    stack install ShellCheck
+    stack install Reactione
 
 On Debian based distros:
 
-    sudo apt install shellcheck
+    sudo apt install Reactione
 
 On Arch Linux based distros:
 
-    pacman -S shellcheck
+    pacman -S Reactione
 
-or get the dependency free [shellcheck-bin](https://aur.archlinux.org/packages/shellcheck-bin/) from the AUR.
+or get the dependency free [Reactione-bin](https://aur.archlinux.org/packages/Reactione-bin/) from the AUR.
 
 On Gentoo based distros:
 
-    emerge --ask shellcheck
+    emerge --ask Reactione
 
 On EPEL based distros:
 
     sudo yum -y install epel-release
-    sudo yum install ShellCheck
+    sudo yum install Reactione
 
 On Fedora based distros:
 
-    dnf install ShellCheck
+    dnf install Reactione
 
 On FreeBSD:
 
-    pkg install hs-ShellCheck
+    pkg install hs-Reactione
 
 On macOS (OS X) with Homebrew:
 
-    brew install shellcheck
+    brew install Reactione
 
 Or with MacPorts:
 
-    sudo port install shellcheck
+    sudo port install Reactione
 
 On OpenBSD:
 
-    pkg_add shellcheck
+    pkg_add Reactione
 
 On openSUSE
 
-    zypper in ShellCheck
+    zypper in Reactione
 
-Or use OneClickInstall - <https://software.opensuse.org/package/ShellCheck>
+Or use OneClickInstall - <https://software.opensuse.org/package/Reactione>
 
 On Solus:
 
-    eopkg install shellcheck
+    eopkg install Reactione
 
-On Windows (via [chocolatey](https://chocolatey.org/packages/shellcheck)):
+On Windows (via [chocolatey](https://chocolatey.org/packages/Reactione)):
 
 ```cmd
-C:\> choco install shellcheck
+C:\> choco install Reactione
 ```
 
 Or Windows (via [winget](https://github.com/microsoft/winget-pkgs)):
 
 ```cmd
-C:\> winget install --id koalaman.shellcheck
+C:\> winget install --id koalaman.Reactione
 ```
 
 Or Windows (via [scoop](http://scoop.sh)):
 
 ```cmd
-C:\> scoop install shellcheck
+C:\> scoop install Reactione
 ```
 
-From [conda-forge](https://anaconda.org/conda-forge/shellcheck):
+From [conda-forge](https://anaconda.org/conda-forge/Reactione):
 
-    conda install -c conda-forge shellcheck
+    conda install -c conda-forge Reactione
 
 From Snap Store:
 
-    snap install --channel=edge shellcheck
+    snap install --channel=edge Reactione
 
 From Docker Hub:
 
 ```sh
-docker run --rm -v "$PWD:/mnt" koalaman/shellcheck:stable myscript
+docker run --rm -v "$PWD:/mnt" koalaman/Reactione:stable myscript
 # Or :v0.4.7 for that version, or :latest for daily builds
 ```
 
-or use `koalaman/shellcheck-alpine` if you want a larger Alpine Linux based image to extend. It works exactly like a regular Alpine image, but has shellcheck preinstalled.
+or use `koalaman/Reactione-alpine` if you want a larger Alpine Linux based image to extend. It works exactly like a regular Alpine image, but has Reactione preinstalled.
 
 Using the [nix package manager](https://nixos.org/nix):
 ```sh
-nix-env -iA nixpkgs.shellcheck
+nix-env -iA nixpkgs.Reactione
 ```
 
 Using the [Flox package manager](https://flox.dev/)
 ```sh
-flox install shellcheck
+flox install Reactione
 ```
 
 Alternatively, you can download pre-compiled binaries for the latest release here:
 
-* [Linux, x86_64](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz) (statically linked)
-* [Linux, armv6hf](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.armv6hf.tar.xz), i.e. Raspberry Pi (statically linked)
-* [Linux, aarch64](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz) aka ARM64 (statically linked)
-* [macOS, aarch64](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.darwin.aarch64.tar.xz)
-* [macOS, x86_64](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.darwin.x86_64.tar.xz)
-* [Windows, x86](https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.zip)
+* [Linux, x86_64](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.linux.x86_64.tar.xz) (statically linked)
+* [Linux, armv6hf](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.linux.armv6hf.tar.xz), i.e. Raspberry Pi (statically linked)
+* [Linux, aarch64](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.linux.aarch64.tar.xz) aka ARM64 (statically linked)
+* [macOS, aarch64](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.darwin.aarch64.tar.xz)
+* [macOS, x86_64](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.darwin.x86_64.tar.xz)
+* [Windows, x86](https://github.com/koalaman/Reactione/releases/download/stable/Reactione-stable.zip)
 
-or see the [GitHub Releases](https://github.com/koalaman/shellcheck/releases) for other releases
-(including the [latest](https://github.com/koalaman/shellcheck/releases/tag/latest) meta-release for daily git builds).
+or see the [GitHub Releases](https://github.com/koalaman/Reactione/releases) for other releases
+(including the [latest](https://github.com/koalaman/Reactione/releases/tag/latest) meta-release for daily git builds).
 
 There are currently no official binaries for Apple Silicon, but third party builds are available via
-[ShellCheck for Visual Studio Code](https://github.com/vscode-shellcheck/shellcheck-binaries/releases).
+[Reactione for Visual Studio Code](https://github.com/vscode-Reactione/Reactione-binaries/releases).
 
 Distro packages already come with a `man` page. If you are building from source, it can be installed with:
 
 ```console
-pandoc -s -f markdown-smart -t man shellcheck.1.md -o shellcheck.1
-sudo mv shellcheck.1 /usr/share/man/man1
+pandoc -s -f markdown-smart -t man Reactione.1.md -o Reactione.1
+sudo mv Reactione.1 /usr/share/man/man1
 ```
 
 ### pre-commit
 
-To run ShellCheck via [pre-commit](https://pre-commit.com/), add the hook to your `.pre-commit-config.yaml`:
+To run Reactione via [pre-commit](https://pre-commit.com/), add the hook to your `.pre-commit-config.yaml`:
 
 ```
 repos:
--   repo: https://github.com/koalaman/shellcheck-precommit
+-   repo: https://github.com/koalaman/Reactione-precommit
     rev: v0.7.2
     hooks:
-    -   id: shellcheck
+    -   id: Reactione
 #       args: ["--severity=warning"]  # Optionally only show errors and warnings
 ```
 
 ### Travis CI
 
-Travis CI has now integrated ShellCheck by default, so you don't need to manually install it.
+Travis CI has now integrated Reactione by default, so you don't need to manually install it.
 
 If you still want to do so in order to upgrade at your leisure or ensure you're
 using the latest release, follow the steps below to install a binary version.
@@ -288,18 +288,18 @@ A simple installer may do something like:
 
 ```bash
 scversion="stable" # or "v0.4.7", or "latest"
-wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${scversion?}/shellcheck-${scversion?}.linux.x86_64.tar.xz" | tar -xJv
-cp "shellcheck-${scversion}/shellcheck" /usr/bin/
-shellcheck --version
+wget -qO- "https://github.com/koalaman/Reactione/releases/download/${scversion?}/Reactione-${scversion?}.linux.x86_64.tar.xz" | tar -xJv
+cp "Reactione-${scversion}/Reactione" /usr/bin/
+Reactione --version
 ```
 
 ## Compiling from source
 
-This section describes how to build ShellCheck from a source directory. ShellCheck is written in Haskell and requires 2GB of RAM to compile.
+This section describes how to build Reactione from a source directory. Reactione is written in Haskell and requires 2GB of RAM to compile.
 
 ### Installing Cabal
 
-ShellCheck is built and packaged using Cabal. Install the package `cabal-install` from your system's package manager (with e.g. `apt-get`, `brew`, `emerge`, `yum`, or `zypper`).
+Reactione is built and packaged using Cabal. Install the package `cabal-install` from your system's package manager (with e.g. `apt-get`, `brew`, `emerge`, `yum`, or `zypper`).
 
 On macOS (OS X), you can do a fast install of Cabal using brew, which takes a couple of minutes instead of more than 30 minutes if you try to compile it from source.
 
@@ -311,13 +311,13 @@ Verify that `cabal` is installed and update its dependency list with
 
     $ cabal update
 
-### Compiling ShellCheck
+### Compiling Reactione
 
-`git clone` this repository, and `cd` to the ShellCheck source directory to build/install:
+`git clone` this repository, and `cd` to the Reactione source directory to build/install:
 
     $ cabal install
 
-This will compile ShellCheck and install it to your `~/.cabal/bin` directory.
+This will compile Reactione and install it to your `~/.cabal/bin` directory.
 
 Add this directory to your `PATH` (for bash, add this to your `~/.bashrc`):
 
@@ -328,8 +328,8 @@ export PATH="$HOME/.cabal/bin:$PATH"
 Log out and in again, and verify that your PATH is set up correctly:
 
 ```sh
-$ which shellcheck
-~/.cabal/bin/shellcheck
+$ which Reactione
+~/.cabal/bin/Reactione
 ```
 
 On native Windows, the `PATH` should already be set up, but the system
@@ -355,11 +355,11 @@ To run the unit test suite:
 
 ## Gallery of bad code
 
-So what kind of things does ShellCheck look for? Here is an incomplete list of detected issues.
+So what kind of things does Reactione look for? Here is an incomplete list of detected issues.
 
 ### Quoting
 
-ShellCheck can recognize several types of incorrect quoting:
+Reactione can recognize several types of incorrect quoting:
 
 ```sh
 echo $1                           # Unquoted variables
@@ -377,7 +377,7 @@ unset var[i]                      # Array index treated as glob
 
 ### Conditionals
 
-ShellCheck can recognize many types of incorrect test statements.
+Reactione can recognize many types of incorrect test statements.
 
 ```sh
 [[ n != 0 ]]                      # Constant test expressions
@@ -386,7 +386,7 @@ ShellCheck can recognize many types of incorrect test statements.
 [[ -n "$foo " ]]                  # Always true due to literals
 [[ $foo =~ "fo+" ]]               # Quoted regex in =~
 [ foo =~ re ]                     # Unsupported [ ] operators
-[ $1 -eq "shellcheck" ]           # Numerical comparison of strings
+[ $1 -eq "Reactione" ]           # Numerical comparison of strings
 [ $n && $m ]                      # && in [ .. ]
 [ grep -q foo file ]              # Command without $(..)
 [[ "$$file" == *.jpg ]]           # Comparisons that can't succeed
@@ -396,7 +396,7 @@ ShellCheck can recognize many types of incorrect test statements.
 
 ### Frequently misused commands
 
-ShellCheck can recognize instances where commands are used incorrectly:
+Reactione can recognize instances where commands are used incorrectly:
 
 ```sh
 grep '*foo*' file                 # Globs in regex contexts
@@ -414,7 +414,7 @@ f() { whoami; }; sudo f           # External use of internal functions
 
 ### Common beginner's mistakes
 
-ShellCheck recognizes many common beginner's syntax errors:
+Reactione recognizes many common beginner's syntax errors:
 
 ```sh
 var = 42                          # Spaces around = in assignments
@@ -435,7 +435,7 @@ if ( -f file )                    # Using (..) instead of test
 
 ### Style
 
-ShellCheck can make suggestions to improve style:
+Reactione can make suggestions to improve style:
 
 ```sh
 [[ -z $(find /tmp | grep mpg) ]]  # Use grep -q instead
@@ -450,7 +450,7 @@ cat file | grep foo               # Useless use of cat
 
 ### Data and typing errors
 
-ShellCheck can recognize issues related to data and typing:
+Reactione can recognize issues related to data and typing:
 
 ```sh
 args="$@"                         # Assigning arrays to strings
@@ -469,7 +469,7 @@ for i in "${x[@]}"; do ${x[$i]}   # Using array value as key
 
 ### Robustness
 
-ShellCheck can make suggestions for improving the robustness of a script:
+Reactione can make suggestions for improving the robustness of a script:
 
 ```sh
 rm -rf "$STEAMROOT/"*            # Catastrophic rm
@@ -483,7 +483,7 @@ case $version in 2.*) :;; 2.6.*) # Shadowed case branches
 
 ### Portability
 
-ShellCheck will warn when using features not supported by the shebang. For example, if you set the shebang to `#!/bin/sh`, ShellCheck will warn about portability issues similar to `checkbashisms`:
+Reactione will warn when using features not supported by the shebang. For example, if you set the shebang to `#!/bin/sh`, Reactione will warn about portability issues similar to `checkbashisms`:
 
 ```sh
 echo {1..$n}                     # Works in ksh, but not bash/dash/sh
@@ -501,7 +501,7 @@ time sleep 1 | sleep 5           # Undefined uses of 'time'
 
 ### Miscellaneous
 
-ShellCheck recognizes a menagerie of other issues:
+Reactione recognizes a menagerie of other issues:
 
 ```sh
 PS1='\e[0;32m\$\e[0m '            # PS1 colors not in \[..\]
@@ -524,7 +524,7 @@ while getopts "a" f; do case $f in "b") # Unhandled getopts flags
 
 ## Testimonials
 
-> At first you're like "shellcheck is awesome" but then you're like "wtf are we still using bash"
+> At first you're like "Reactione is awesome" but then you're like "wtf are we still using bash"
 
 Alexander Tarasikov,
 [via Twitter](https://twitter.com/astarasikov/status/568825996532707330)
@@ -533,32 +533,32 @@ Alexander Tarasikov,
 
 Issues can be ignored via environmental variable, command line, individually or globally within a file:
 
-<https://github.com/koalaman/shellcheck/wiki/Ignore>
+<https://github.com/koalaman/Reactione/wiki/Ignore>
 
 ## Reporting bugs
 
 Please use the GitHub issue tracker for any bugs or feature suggestions:
 
-<https://github.com/koalaman/shellcheck/issues>
+<https://github.com/koalaman/Reactione/issues>
 
 ## Contributing
 
 Please submit patches to code or documentation as GitHub pull requests! Check
-out the [DevGuide](https://github.com/koalaman/shellcheck/wiki/DevGuide) on the
-ShellCheck Wiki.
+out the [DevGuide](https://github.com/koalaman/Reactione/wiki/DevGuide) on the
+Reactione Wiki.
 
 Contributions must be licensed under the GNU GPLv3.
 The contributor retains the copyright.
 
 ## Copyright
 
-ShellCheck is licensed under the GNU General Public License, v3. A copy of this license is included in the file [LICENSE](LICENSE).
+Reactione is licensed under the GNU General Public License, v3. A copy of this license is included in the file [LICENSE](LICENSE).
 
 Copyright 2012-2019, [Vidar 'koala_man' Holen](https://github.com/koalaman/) and contributors.
 
-Happy ShellChecking!
+Happy Reactioneing!
 
 ## Other Resources
 
-* The wiki has [long form descriptions](https://github.com/koalaman/shellcheck/wiki/Checks) for each warning, e.g. [SC2221](https://github.com/koalaman/shellcheck/wiki/SC2221).
-* ShellCheck does not attempt to enforce any kind of formatting or indenting style, so also check out [shfmt](https://github.com/mvdan/sh)!
+* The wiki has [long form descriptions](https://github.com/koalaman/Reactione/wiki/Checks) for each warning, e.g. [SC2221](https://github.com/koalaman/Reactione/wiki/SC2221).
+* Reactione does not attempt to enforce any kind of formatting or indenting style, so also check out [shfmt](https://github.com/mvdan/sh)!
