@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/koalaman/Reactione/actions/workflows/build.yml/badge.svg)](https://github.com/koalaman/Reactione/actions/workflows/build.yml)
 
 
-# MegaScale
+# unobtrusive
 
 Reactione is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts:
 
